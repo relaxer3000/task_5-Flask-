@@ -9,7 +9,7 @@ class User(SQLModel, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
     username: str = Field(..., unique=True)
     email: EmailStr = Field(..., unique=True)
-    create_at: Optional[datetime] = Field(default_factory=datetime.now)
+    create_at: datetime = Field(default_factory=datetime.utcnow, nullable=False)
 
     model_config = {
         "json_schema_extra": {
